@@ -33,13 +33,13 @@ Lottery ticket hypothesis (LTH) pruning on a LeNet-300 model for MNIST image cla
 
 - Imports:
   - PyTorch libraries for deep learning (torch, nn, init, torchvision, torchvision.transforms)
-NumPy for numerical computations (numpy)
-Matplotlib for plotting (matplotlib.pyplot, matplotlib.ticker)
-tqdm for progress bars (tqdm)
-Model Definition:
+  - NumPy for numerical computations (numpy)
+  - Matplotlib for plotting (matplotlib.pyplot, matplotlib.ticker)
+  - tqdm for progress bars (tqdm)
+- Model Definition:
 
 Model class defines a LeNet-300 architecture with two convolutional layers followed by a fully connected layer for classification.
-Weight Initialization:
+- Weight Initialization:
 
 weight_init function initializes weights in the model layers using Xavier normal initialization for linear layers and appropriate initializations for convolutional and recurrent layers (if used).
 Training and Testing Loops:
