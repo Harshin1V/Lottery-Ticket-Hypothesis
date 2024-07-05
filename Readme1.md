@@ -49,6 +49,24 @@ weight_init function initializes weights in the model layers using Xavier normal
 ```train``` function trains the model for **one** epoch. It performs gradient descent with weight decay to update the weights based on the loss calculated on a mini-batch of data. It also implements a technique where gradients of weights with very small values are set to zero during backpropagation (specific to LTH pruning).
 ```test``` function evaluates the model's performance on the test dataset and returns the accuracy.
 
+
+
+
+```
+In the context of the code you provided (referencing Lottery Ticket Hypothesis pruning), EPS (usually written in uppercase) represents a small epsilon value. It's a hyperparameter that defines a threshold for considering weights as "small" during the LTH pruning process.
+
+Here's how it works:
+
+Gradient Calculation: During training, the model calculates gradients for its weights based on the loss function. These gradients indicate how much each weight should be adjusted to minimize the loss.
+LTH Pruning with EPS: The code iterates through the model's weights. For weights whose values are less than EPS (considered very small), the corresponding elements in the gradient tensor are set to zero.
+Impact: By setting gradients to zero for small weights, LTH effectively prevents them from being updated significantly during backpropagation. This encourages the model to focus its learning on weights with larger magnitudes, potentially leading to a sparser model with fewer non-zero weights.
+The choice of EPS is crucial. Here's why:
+
+Small EPS: A very small EPS value might prune out too many weights, potentially harming the model's performance.
+Large EPS: A large EPS value might not achieve significant pruning, limiting the benefits of LTH.
+Finding the optimal EPS value often involves experimentation on your specific dataset and model architecture. Some techniques involve starting with a larger EPS and gradually reducing it while monitoring the model's performance
+```
+---------
 - Utility Functions:
   - ```print_nonzeros``` function calculates the percentage of non-zero weights in each layer and the overall model, providing insights into the **pruning process.**
   - ```get_model_mask``` function creates a mask with all ones, indicating that initially all weights are considered for keeping.
