@@ -50,10 +50,11 @@ weight_init function initializes weights in the model layers using Xavier normal
 ```test``` function evaluates the model's performance on the test dataset and returns the accuracy.
 
 - Utility Functions:
-```print_nonzeros``` function calculates the percentage of non-zero weights in each layer and the overall model, providing insights into the **pruning process.** <br>
-```get_model_mask``` function creates a mask with all ones, indicating that initially all weights are considered for keeping. <br>
-```mask_for_prune_by_percentile``` function creates a mask that sets weights below a certain percentile (defined by p) to zero for each layer, effectively **pruning those weights.** <br>
-```get_statistics``` function runs multiple pruning iterations (**PRUNING_ITERATIONS**) with retraining (NUM_EPOCHS) in between. **It keeps track of the best accuracy**, non-zero weight percentages, loss values, and accuracy values for each iteration. <br>
+  - ```print_nonzeros``` function calculates the percentage of non-zero weights in each layer and the overall model, providing insights into the **pruning process.**
+  - ```get_model_mask``` function creates a mask with all ones, indicating that initially all weights are considered for keeping.
+  - ```mask_for_prune_by_percentile``` function creates a mask that sets weights below a certain percentile (defined by p) to zero for each layer, effectively **pruning those weights.**
+  - ```get_statistics``` function runs multiple pruning iterations (**PRUNING_ITERATIONS**) with retraining (NUM_EPOCHS) in between. **It keeps track of the best accuracy**, non-zero weight percentages, loss values, and accuracy values for each iteration.
+  
 
 - Training and Pruning:
   - Data loaders are created for training and testing datasets.
@@ -71,7 +72,7 @@ weight_init function initializes weights in the model layers using Xavier normal
   - The model is trained for a specified number of epochs.
   - Training and validation losses and accuracy are recorded.
   - The code iterates through pruning steps, printing the number of non-zero weights after each step.
-<br>
+
 - Itimplements iterative pruning, where weights are pruned progressively in each iteration.
   - Random reinitialization is an alternative strategy where weights are reinitialized after pruning to potentially discover a better sparse sub-network.
   - The code tracks various statistics to analyze the impact of pruning on model performance and sparsity.
