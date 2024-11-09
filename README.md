@@ -1,4 +1,8 @@
 # Lottery-Ticket-Hypothesis
+1. **Objective**: Implement and test the Lottery Ticket Hypothesis, which posits that sparse subnetworks ("winning tickets") within dense neural networks can achieve comparable accuracy when trained independently.
+2. **Method**: Employ iterative pruning to identify effective subnetworks while comparing the impact of maintaining initial weights versus random reinitialization.
+3. **Results**: Show that these "winning tickets" allow for efficient training and storage, as subnetworks retain high accuracy with only 10-20% of the original network's size.
+
 
 - A re-implementation of the paper https://arxiv.org/abs/1803.03635 The Lottery Ticket Hypothesis: Finding Sparse, Trainable Neural Networks by Jonathan Frankle and Michael Carbin.
 - This implementation focuses only on applying the hypothesis to Fully Connected networks on MNIST .
